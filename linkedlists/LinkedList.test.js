@@ -148,3 +148,12 @@ describe('#removeAtIndex', () => {
         })
     })
 })
+
+describe('#removeDupes', () => {
+    test('removes duplicates from an unsorted linked list', () => {
+        const ll = LinkedList.fromValues(10, 11, 20, 20, 30, 40, 40)
+        ll.removeDupes()
+        
+        expect(ll.length).toBe(5)
+    })
+})

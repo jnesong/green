@@ -10,21 +10,21 @@ class LinkedList {
         this.length++ // increase the length of the LinkedList
     } // first method - add elements to linked list at the beginning, data is the value we want to insert 
 
-    getByIndex(index){
-        if(index<0 || index>= this.length) return null // passes first 2 tests
+    getByIndex(index) {
+        if (index < 0 || index >= this.length) return null // passes first 2 tests
 
         let current = this.head
-        for (let i=0; i < index; i++){
+        for (let i = 0; i < index; i++) {
             current = current.next
         }
         return current
     }
 
-    insertAtIndex(index, value){
+    insertAtIndex(index, value) {
         if (index === 0) return this.insertAtHead(value)
 
-        const prev = this.getByIndex(index-1)
-        if (prev == null) return null 
+        const prev = this.getByIndex(index - 1)
+        if (prev == null) return null
 
         prev.next = new LinkedListNode(value, prev.next) //create new node between two nodes
         this.length++
@@ -35,20 +35,36 @@ class LinkedList {
         this.length--
     }
 
-    removeAtIndex(index){
+    removeAtIndex(index) {
         if (index === 0) return this.removeHead()
 
-        const prev = this.getByIndex(index-1)
-        if (prev == null) return null 
+        const prev = this.getByIndex(index - 1)
+        if (prev == null) return null
 
         prev.next = prev.next.next //cut out previous value's next and set as the next 
-        this.length-- 
+        this.length--
     }
 
-    print(){
-        let output=''
+    removeDupes() {
+        let current = this.head;
+        while (current) {
+            let runner = current;
+            while (runner.next) {
+                if (runner.next.value === current.value) {
+                    runner.next = runner.next.next;
+                } else {
+                    runner = runner.next;
+                }
+            }
+            current = current.next;
+        }
+
+    }
+
+    print() {
+        let output = ''
         let current = this.head
-        while (current){
+        while (current) {
             output = `${output}${current.value} -> `
             current = current.next
         }
@@ -58,16 +74,16 @@ class LinkedList {
 }
 
 class LinkedListNode {
-    constructor(value, next){
+    constructor(value, next) {
         this.value = value
         this.next = next
     }
 }
 
 //helper function to create LinkedList from array of values 
-LinkedList.fromValues = function ( ...values) {
+LinkedList.fromValues = function (...values) {
     const ll = new LinkedList()
-    for (let i = values.length-1; i >= 0; i--){
+    for (let i = values.length - 1; i >= 0; i--) {
         ll.insertAtHead(values[i])
     }
     return ll
