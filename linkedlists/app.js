@@ -8,8 +8,6 @@ const LinkedList = require ('./LinkedList') // import LinkedList file
 // ll.removeHead()
 // ll.print()
 
-const ll = LinkedList.fromValues(10, 11, 20, 20, 30, 40, 40)
+const ll = LinkedList.fromValues(10, 11, 20, 24, 30, 42, 40)
 
-ll.print()
-ll.removeDupes()
-ll.print()
+console.log(ll.returnK(3))

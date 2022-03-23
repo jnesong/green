@@ -52,13 +52,47 @@ class LinkedList {
             while (runner.next) {
                 if (runner.next.value === current.value) {
                     runner.next = runner.next.next;
+                    this.length--
                 } else {
                     runner = runner.next;
                 }
             }
             current = current.next;
         }
+        return this
+    }
 
+    // returnK(k) {
+    //     if (k < 1 || k >= this.length) return null // passes first 2 tests
+
+    //     let index = this.length - (k)
+    //     let current = this.head
+    //     for (let i = 0; i < index; i++) {
+    //         current = current.next
+    //     }
+    //     return current.value
+    // }
+
+    returnK(k) {
+
+        if (k < 1) return null // passes first 2 tests
+
+        let p1 = this.head
+        let p2 = this.head
+
+        for (let i = 0; i < k; i++) {
+            if (p1 === null) {
+                return null;
+            }
+            p1 = p1.next;
+        }
+
+        while (p1 !== null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        return p2.value
     }
 
     print() {

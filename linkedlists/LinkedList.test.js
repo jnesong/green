@@ -95,8 +95,8 @@ describe('#insertAtIndex', () => {
 
 })
 
-describe ('#removeHead', () => {
-    test ('removes the head', () => {
+describe('#removeHead', () => {
+    test('removes the head', () => {
         const ll = LinkedList.fromValues(10, 20, 30)
         ll.removeHead()
 
@@ -153,7 +153,36 @@ describe('#removeDupes', () => {
     test('removes duplicates from an unsorted linked list', () => {
         const ll = LinkedList.fromValues(10, 11, 20, 20, 30, 40, 40)
         ll.removeDupes()
-        
+
         expect(ll.length).toBe(5)
     })
+})
+
+describe('#returnK', () => {
+    describe('with k less than 1', () => {
+        test('it returns null', () => {
+            const ll = LinkedList.fromValues(10, 20)
+
+            expect(ll.returnK(-1)).toBeNull()
+            expect(ll.returnK(0)).toBeNull()
+        })
+    })
+
+    describe('with k greater than list length', () => {
+        test('it returns null', () => {
+            const ll = LinkedList.fromValues(10, 20)
+
+            expect(ll.returnK(3)).toBeNull()
+        })
+    })
+
+    describe('with k value between 1 and list length', () => {
+        test('it finds the kth to last element', () => {
+            const ll = LinkedList.fromValues(10, 11, 12, 13, 14, 15, 16)
+            x = ll.returnK(3)
+
+            expect(x).toBe(14)
+        })
+    })
+
 })
