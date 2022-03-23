@@ -75,7 +75,7 @@ class LinkedList {
 
     returnK(k) {
 
-        if (k < 1) return null // passes first 2 tests
+        if (k < 1) return null
 
         let p1 = this.head
         let p2 = this.head
@@ -94,6 +94,21 @@ class LinkedList {
 
         return p2.value
     }
+
+    // deleteMiddle(byeValue) {
+    //     let beginningLength = this.length
+    //     let current = this.head
+    //     if (current.value === byeValue) return null
+    //     while (current.next !== null) {
+    //         if (current.next.value === byeValue && current.next.next !== null) {
+    //             current.next = current.next.next
+    //             this.length--
+    //         }
+    //         current = current.next
+    //     }
+    //     if (beginningLength === this.length) return null
+    // }
+
 
     print() {
         let output = ''

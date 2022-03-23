@@ -186,3 +186,33 @@ describe('#returnK', () => {
     })
 
 })
+
+describe('#deleteMiddle', () => {
+    describe('with byeValue not in linked list', () => {
+        test('it returns null', () => {
+            const ll = LinkedList.fromValues(10, 14, 40, 55, 20)
+
+            expect(ll.deleteMiddle(33)).toBeNull()
+        })
+    })
+
+    describe('with byeValue as head or last node', () => {
+        test('it returns unchanged list', () => {
+            const ll = LinkedList.fromValues(10, 14, 40, 55, 20)
+            ll.deleteMiddle(10)
+            ll.deleteMiddle(20)
+
+            expect(ll.length).toBe(5)
+        })
+    })
+
+    describe('with byeValue in the middle of linked list', () => {
+        test('it returns a linked list with the byeValue removed', () => {
+            const ll = LinkedList.fromValues(10, 14, 40, 55, 20)
+            ll.deleteMiddle(55)
+
+            expect(ll.length).toBe(4)
+        })
+    })
+
+})
