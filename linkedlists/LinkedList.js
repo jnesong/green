@@ -95,19 +95,28 @@ class LinkedList {
         return p2.value
     }
 
-    // deleteMiddle(byeValue) {
-    //     let beginningLength = this.length
-    //     let current = this.head
-    //     if (current.value === byeValue) return null
-    //     while (current.next !== null) {
-    //         if (current.next.value === byeValue && current.next.next !== null) {
-    //             current.next = current.next.next
-    //             this.length--
-    //         }
-    //         current = current.next
-    //     }
-    //     if (beginningLength === this.length) return null
-    // }
+    deleteMiddle(byeValue) {
+        let beginningLength = this.length
+        let current = this.head
+        if (current.value === byeValue) return null
+        while (current.next !== null) {
+            if (current.next.value === byeValue && current.next.next !== null) {
+                current.next = current.next.next
+                this.length--
+            }
+            current = current.next
+        }
+        if (beginningLength === this.length) return null
+    }
+
+    deleteWOHead(byeNode) {
+        if (byeNode.next===null || byeNode===null){
+            return null
+        }
+        let nextNodeValue = byeNode.next.value
+        byeNode.value = nextNodeValue
+        byeNode.next = byeNode.next.next
+    }
 
 
     print() {
