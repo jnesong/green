@@ -118,6 +118,22 @@ class LinkedList {
         byeNode.next = byeNode.next.next
     }
 
+    partition (value) {
+        let current = this.head
+        while (current !== null) {
+            if (current.next.value < value){
+                let tempNode = current.next
+                let newNext = current.next.next
+                current.next = newNext
+                let oldHead = this.head
+                this.head = tempNode
+                this.head.next = oldHead
+            }
+            current = current.next
+        }
+
+    }
+
 
     print() {
         let output = ''
@@ -132,7 +148,7 @@ class LinkedList {
 }
 
 class LinkedListNode {
-    constructor(value, next) {
+    constructor(value, next = null) {
         this.value = value
         this.next = next
     }

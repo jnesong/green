@@ -6,9 +6,9 @@ const LinkedList = require ('./LinkedList') // import LinkedList file
 // ll.removeHead()
 // ll.print()
 
-const ll = LinkedList.fromValues(10, 11, 14, 18, 19, 20)
+const ll = LinkedList.fromValues(10, 11, 33, 42, 18, 14, 19, 6)
 
 ll.print()
-ll.deleteWOHead(ll.getByIndex(4))
+ll.partition(19)
 ll.print()
 
