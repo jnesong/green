@@ -118,22 +118,31 @@ class LinkedList {
         byeNode.next = byeNode.next.next
     }
 
-    partition (value) {
+    partition (headNode, x) {
+
         let current = this.head
-        while (current !== null) {
-            if (current.next.value < value){
-                let tempNode = current.next
-                let newNext = current.next.next
-                current.next = newNext
-                let oldHead = this.head
-                this.head = tempNode
-                this.head.next = oldHead
+        while (current.next) {
+            if (current.value < x ){
+                let temp = current.value
+                let nextNodeValue = current.next.value
+                current.value = nextNodeValue
+                current.next = current.next.next
+                const newNode = new LinkedListNode(temp, this.head)
+                this.head = newNode
             }
+            else {
             current = current.next
+            }
         }
-
+        console.log(current)
+        if (current.value < x) {
+            let last = current.value
+            current = null
+            const newNode = new LinkedListNode(last, this.head)
+            this.head = newNode
+        }
+  
     }
-
 
     print() {
         let output = ''
