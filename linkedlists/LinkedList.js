@@ -134,10 +134,9 @@ class LinkedList {
             current = current.next
             }
         }
-        console.log(current)
         if (current.value < x) {
             let last = current.value
-            current = null
+            current.value = null
             const newNode = new LinkedListNode(last, this.head)
             this.head = newNode
         }
