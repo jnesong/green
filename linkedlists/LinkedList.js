@@ -110,7 +110,7 @@ class LinkedList {
     }
 
     deleteWOHead(byeNode) {
-        if (byeNode.next===null || byeNode===null){
+        if (byeNode.next === null || byeNode === null) {
             return null
         }
         let nextNodeValue = byeNode.next.value
@@ -118,11 +118,20 @@ class LinkedList {
         byeNode.next = byeNode.next.next
     }
 
-    partition (headNode, x) {
-
+    partition(x) {
         let current = this.head
         while (current.next) {
-            if (current.value < x ){
+
+            if ((current.next.next === null) && (current.next.value < x)) {
+
+                let last = current.next.value
+                current.next = null
+                const newN = new LinkedListNode(last, this.head)
+                this.head = newN
+
+            }
+
+            else if (current.value < x) {
                 let temp = current.value
                 let nextNodeValue = current.next.value
                 current.value = nextNodeValue
@@ -130,17 +139,12 @@ class LinkedList {
                 const newNode = new LinkedListNode(temp, this.head)
                 this.head = newNode
             }
+
             else {
-            current = current.next
+                current = current.next
             }
         }
-        if (current.value < x) {
-            let last = current.value
-            current.value = null
-            const newNode = new LinkedListNode(last, this.head)
-            this.head = newNode
-        }
-  
+
     }
 
     print() {
