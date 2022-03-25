@@ -1,0 +1,13 @@
+const Stack = require ('./SQ')
+
+let ss = new Stack (10)
+ss.push(5)
+ss.push(10)
+ss.pop()
+ss.pop()
+console.log(ss.empty())
+ss.push(12)
+ss.push(29)
+console.log(ss.peek())
+console.log(ss)
+console.log(ss.empty())
