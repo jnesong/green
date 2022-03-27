@@ -1,39 +1,49 @@
 class Stack {
-    constructor( limit ){
+    constructor(limit) {
         this.data = []
         this.limit = limit
         this.size = 0
-        this.min = []
+        this.mins = []
     }
 
-    push (element) {
-        this.data.push( element )
-        this.size++
-        if (element < min){
-            this.min.push (element)
+    push(element) {
+        if (!this.mins[this.mins.length - 1]) {
+            this.mins.push(element)
+        }
+        else if (element < this.mins[this.mins.length - 1]) {
+            this.mins.push(element)
         }
 
+        this.data.push(element)
+        this.size++
     }
 
-    pop () {
-        this.data.pop()
+    pop() {
+        let x = this.data.pop()
         this.size--
+        if (x === this.mins[this.mins.length - 1]) {
+            this.mins.pop()
+        }
     }
 
-    peek(){
-        return this.data[this.size-1]
+    peek() {
+        return this.data[this.size - 1]
     }
 
-    empty (){
-        if (this.size < 1){
+    empty() {
+        if (this.size < 1) {
             return true
-        } else {return false}
+        } else { return false }
     }
 
-    full(){
+    full() {
         if (this.size === this.limit) {
             return true
-        } else {return false}
+        } else { return false }
+    }
+
+    min(){
+        return this.mins[this.mins.length - 1]
     }
 }
 
