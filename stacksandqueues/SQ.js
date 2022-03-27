@@ -3,11 +3,15 @@ class Stack {
         this.data = []
         this.limit = limit
         this.size = 0
+        this.min = []
     }
 
     push (element) {
         this.data.push( element )
         this.size++
+        if (element < min){
+            this.min.push (element)
+        }
 
     }
 
