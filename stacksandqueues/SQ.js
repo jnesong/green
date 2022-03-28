@@ -43,8 +43,18 @@ class Stack {
     }
 
     min(){
-        return this.mins[this.mins.length - 1]
+        if (this.mins[this.mins.length - 1]) {
+            return this.mins[this.mins.length - 1]
+        } else {return null}
     }
+}
+
+Stack.fromValues = function (...values){
+    const ss = new Stack ( 10 )
+    for (let i=0 ; i < values.length; i++ ){
+        ss.push(values[i])
+    }
+    return ss
 }
 
 module.exports = Stack
