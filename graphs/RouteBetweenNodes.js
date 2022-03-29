@@ -16,20 +16,24 @@ let graph = [
 
 function BreadthSearch(nodeA, nodeB) {
     let queue = []
+    nodeA.visited = 1
     queue.push(nodeA)
     while (queue) {
         let current = queue.shift()
-        for (let i = 0; i < current.follows.length; i++) {
-            if (current.follows[i] === nodeB.id) {
-                return true
+        if (current.follows.length !== 0) {
+            for (let i = 0; i < current.follows.length; i++) {
+
+                if (current.follows[i] === nodeB.id) {
+                    return true
+                }
+                let x = current.follows[i]
+                if (graph[x].visited === 0) {
+                    graph[x].visited = 1
+                    queue.push(graph[x])
+                }
             }
-            current.visited = 1
-            let x = current.follows[i]
-            if (!graph[x].visited) {
-                queue.push(graph[x])
-            }
-            // console.log(queue)
-        }
+        } 
+        console.log(queue)
     }
     return false
 }
@@ -39,5 +43,5 @@ function DepthSearch(nodeA, nodeB) {
 }
 
 
-console.log(BreadthSearch(graph[0], graph[3]))
+console.log(BreadthSearch(graph[0], graph[8]))
 
