@@ -20,20 +20,21 @@ function BreadthSearch(nodeA, nodeB) {
     queue.push(nodeA)
     while (queue) {
         let current = queue.shift()
-        if (current.follows.length !== 0) {
+        console.log(current)
+        // if (current.follows.length !== 0) {
             for (let i = 0; i < current.follows.length; i++) {
 
                 if (current.follows[i] === nodeB.id) {
                     return true
                 }
+                
                 let x = current.follows[i]
                 if (graph[x].visited === 0) {
                     graph[x].visited = 1
                     queue.push(graph[x])
                 }
             }
-        } 
-        console.log(queue)
+        // }
     }
     return false
 }
