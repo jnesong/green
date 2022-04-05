@@ -15,34 +15,38 @@ let graph = [
 //Because its looking for paths breadth first search seems more applicable than depth first search
 
 function BreadthSearch(nodeA, nodeB) {
+    if (nodeA === nodeB) {
+        return true
+    }
     let queue = []
     nodeA.visited = 1
     queue.push(nodeA)
-    while (queue) {
+    while (queue[0]) {
         let current = queue.shift()
         console.log(current)
-        // if (current.follows.length !== 0) {
+        if (current.follows[0]) {
             for (let i = 0; i < current.follows.length; i++) {
 
                 if (current.follows[i] === nodeB.id) {
                     return true
                 }
-                
+
                 let x = current.follows[i]
                 if (graph[x].visited === 0) {
                     graph[x].visited = 1
                     queue.push(graph[x])
                 }
             }
-        // }
+        }
+
     }
     return false
 }
 
-function DepthSearch(nodeA, nodeB) {
+// function DepthSearch(nodeA, nodeB) {
 
-}
+// }
 
 
-console.log(BreadthSearch(graph[0], graph[8]))
+console.log(BreadthSearch(graph[0], graph[3]))
 
