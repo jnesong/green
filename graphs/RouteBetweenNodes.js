@@ -23,9 +23,9 @@ function BreadthSearch(nodeA, nodeB) {
     queue.push(nodeA)
     while (queue[0]) {
         let current = queue.shift()
-        console.log(current)
         if (current.follows[0]) {
             for (let i = 0; i < current.follows.length; i++) {
+                // console.log(current.follows[i])
 
                 if (current.follows[i] === nodeB.id) {
                     return true
@@ -36,6 +36,7 @@ function BreadthSearch(nodeA, nodeB) {
                     graph[x].visited = 1
                     queue.push(graph[x])
                 }
+                // console.log(queue)
             }
         }
 
@@ -43,10 +44,46 @@ function BreadthSearch(nodeA, nodeB) {
     return false
 }
 
-// function DepthSearch(nodeA, nodeB) {
+function DepthSearch(nodeA, nodeB) {
+    if (nodeA === nodeB) {
+        return true
+    }
+    let current = nodeA
+    if (current.follows[0]) {
+        for (let i = 0; i < current.follows.length; i++) {
 
-// }
+            if (current.follows[i] === nodeB.id) {
+                return true
+            }
+
+            let x = current.follows[i]
+            // console.log(graph[x])
+            if (graph[x].visited === 0) {
+                graph[x].visited = 1
+                if (DepthSearch(graph[x], nodeB)) {
+                    return true
+                }
+            }
+        }
+    }
+
+    return false
+
+}
+
+// console.log(BreadthSearch(graph[1], graph[7]) === true)
+// console.log(BreadthSearch(graph[0], graph[3]) === true)
+// console.log(BreadthSearch(graph[0], graph[0]) === true)
+// console.log(BreadthSearch(graph[0], graph[8]) === false)
+// console.log(BreadthSearch(graph[4], graph[8]) === false)
+
+console.log(DepthSearch(graph[1], graph[7]) === true)
+console.log(DepthSearch(graph[0], graph[3]) === true)
+console.log(DepthSearch(graph[0], graph[0]) === true)
+console.log(DepthSearch(graph[0], graph[8]) === false)
+console.log(DepthSearch(graph[4], graph[8]) === false)
 
 
-console.log(BreadthSearch(graph[0], graph[3]))
+
+
 
