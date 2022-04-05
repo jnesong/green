@@ -8,9 +8,9 @@
 let tree = {}
 
 function minimalTree(arr) {
-    let middle = Math.floor(arr.length / 2)
-    if (middle<2){
-        tree[arr[middle]] = {v: arr[middle], l:arr[0], r:arr[2]}
+    let middle = Math.ceil(arr.length / 2)
+    if (middle<3){
+        tree[arr[middle]] = {v: arr[1], l:arr[0], r:arr[2]}
         return tree[arr[middle]].v
     }
     let left = []
@@ -29,7 +29,7 @@ function minimalTree(arr) {
 };
 
 
-
 // console.log(minimalTree([-10, -3, 0, 4, 22, 109, 201]))
 console.log(minimalTree([-30, -10, -3, 0, 4, 22, 56, 109, 201]))
+// console.log(minimalTree([1, 3, 4, 6, 7, 8, 10, 13, 14]))
 console.log(tree)
