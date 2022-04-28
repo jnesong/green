@@ -37,18 +37,26 @@ class MySet {
     // don't worry about arrays here!
     // return true if successful, otherwise false
     delete(item) {
-
+        let x = item
+        delete this.data[x]
+        return x
     }
 
     // return true if in MySet, otherwise false
     // don't worry about arrays here!
     has(item) {
+        if (this.data[item]){
+            return true
+        } else {
+            return false
+        }
 
     }
 
     // return data as an array
     // don't worry about arrays here!
     entries() {
+        return Object.keys(this.data)
 
     }
 }
@@ -64,5 +72,8 @@ module.exports = MySet;
 let ms = new MySet("aaaab")
 console.log(ms)
 console.log(ms.size())
-console.log(ms.add("a"))
-console.log(ms.add("d"))
+console.log(ms.add("j"))
+console.log("deleted", ms.delete("d"))
+console.log(ms.has("e"))
+console.log(ms.entries())
+console.log(ms)
